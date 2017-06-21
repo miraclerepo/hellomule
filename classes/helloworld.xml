@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="192.168.99.100" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration" protocol="HTTP" host="localhost" port="8081" doc:name="HTTP Request Configuration"/>
+    <flow name="helloworldFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/hello" allowedMethods="get" metadata:id="07d5e1fb-03da-4666-9506-cc906b5fce9c" doc:name="HTTP"/>
+        <set-payload value="This is Naveen!!!!
+" doc:name="Set Payload"/>
+        <logger message="Hello World!!! this is Naveen" level="INFO" doc:name="Logger"/>
+    </flow>
+</mule>
